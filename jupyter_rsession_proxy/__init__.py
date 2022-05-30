@@ -1,4 +1,3 @@
-import getpass
 import os
 import pathlib
 import shutil
@@ -45,7 +44,7 @@ def rewrite_auth(response, request):
 
 def setup_rserver():
     def _get_env(port):
-        return dict(USER=getpass.getuser())
+        return dict(USER='nbuser')
 
     def db_config(db_dir):
         '''
@@ -85,7 +84,7 @@ def setup_rserver():
             '--www-port=' + str(port),
             '--www-verify-user-agent=0',
             '--secure-cookie-key-file=' + ntf.name,
-            '--server-user=' + getpass.getuser(),
+            '--server-user=' + 'nbuser',
         ]
         # Support at least v1.2.1335 and up
 
@@ -136,7 +135,7 @@ def setup_rsession():
             '--program-mode=server',
             '--log-stderr=1',
             '--session-timeout-minutes=0',
-            '--user-identity=' + getpass.getuser(),
+            '--user-identity=' + 'nbuser',
             '--www-port=' + str(port)
         ]
 
